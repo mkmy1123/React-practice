@@ -15,32 +15,45 @@
   <script type="text/babel">
   let dom = document.querySelector('#root');
 
-  let message = "新しいメッセージ";
+  const table = {
+    fontSize: "16px",
+    padding: "5px 50px",
+  }
+  const th = {
+    color: 'white',
+    backgroundColor: '#006',
+    padding: '5px 15px',
+  }
+  const td = {
+    color: 'black',
+    padding: '5px 15px',
+    border: '1px solid gray',
+  }
 
-  const msg_s = {
-    fontSize: "20pt",
-    fontWeight: "bold",
-    color: "red",
-    border: "1px solid blue"
-  }
-  let printMsg = function(msg, size, color){
-    const style = {
-      fontSize: size + "pt",
-      fontWeight: '700',
-      color: color,
-      border: "1px solid " + color
-    };
-    return <p style={style}>{msg}</p>;
-  }
-  
+  let data = [
+    {name:'Taro', mail:'taro@yamada', age:45 },
+    {name:'Hanako', mail:'hanako@flower', age:37 },
+    {name:'Sachiko', mail:'sachiko@happy', age:29 },
+  ];
+
   let el = (
     <div>
-      {printMsg('最初のメッセージ', 30, '#ddd')}
-      {printMsg('次のメッセージです', 20 , '#aaa')}
-      {printMsg('最後のメッセージでした', 14, '#333')}
+      <table style={table}>
+        <tr>
+          <th style={th}>name</th>
+          <th style={th}>mail</th>
+          <th style={th}>age</th>
+        </tr>
+        {data.map((value) => (
+          <tr>
+            <td style={td}>{value.name}</td>
+            <td style={td}>{value.mail}</td>
+            <td style={td}>{value.age}</td>
+          </tr>
+        ))}
+      </table>
     </div>
   );
-  
   ReactDOM.render(el, dom);
   </script>
 </body>
