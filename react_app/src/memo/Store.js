@@ -26,7 +26,7 @@ export function memoReducer(state = initData, action){
 function addReduce(state, action){
   let data = {
     message:action.message,
-    created:new Data()
+    created:new Date()
   };
   let newdata = state.data.slice();
   newdata.unshift(data);
@@ -42,16 +42,27 @@ function findReduce(state, action){
   let f = action.find;
   let fdata = [];
   state.data.forEach((value)=>{
-    if (value.message.indeOf(f) >= 0){
+    if (value.message.indexOf(f) >= 0){
       fdata.push(value);
     }
   });
   return {
     data:state.data,
-    message:'delete "' + action.index + '":',
+    message:'find "' + f + '":',
+    mode:'find',
+    fdata:fdata
+  }
+}
+
+function deleteReduce(state, action){
+  let newdata = state.data.slice();
+  newdata.splice(action.index, 1);
+  return{
+    data:newdata,
+    message:'delete "'+ action.index + '":',
     mode:'delete',
     fdata:[]
-  }
+  };
 }
 
 export function addMemo(text){

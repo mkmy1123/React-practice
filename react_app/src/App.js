@@ -25,6 +25,7 @@ td = {
           <td style={this.td}><FindForm /></td>
           <td style={this.td}><DelForm /></td>
         </tr></tbody></table>
+        <Memo />
       </div>
     );
   }
