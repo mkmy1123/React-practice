@@ -7,43 +7,19 @@ import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import './index.css';
 import App from './App';
+import MemoStore, { memoReducer } from './memo/Store';
 
-let state_value = {
-  counter:0,
-  message:"COUNTER"
-}
-
-function counter(state = state_value, action){
-  switch(action.type){
-    case 'INCREMENT':
-    return {
-      counter:state.counter + 1,
-      message: "INCREMENT"
-    };
-    case 'DECREMENT':
-    return {
-      counter:state.counter - 1,
-      message: "DECREMENT"
-    };
-    case 'RESET':
-    return {
-      counter:0,
-      message:"RESET"
-    };
-    default:
-    return state;
-  }
-}
-
-const persistConfig = {
-  key: 'root',
+let persistConfig = {
+  key: 'memo',
   storage,
-}
+  blacklist: ['message', 'mode', 'fdata'],
+  whitelist: ['data']
+};
 
-const persistedReducer = persistReducer(persistConfig, counter)
+const persistedReducer = persistReducer(persistConfig, memoReducer);
 
-let store = createStore(persistedReducer)
-let pstore = persistStore(store)
+let store = createStore(persistedReducer);
+let pstore = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
