@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import style from '../static/Style';
+import Layout from '../components/Layout';
+import Image from '../static/Image';
 
-export default () => <div>
-  {style}
-  <h1>Next.js</h1>
-  <p>Welcome to next.js!</p>
-  <hr />
-  <div>
-    <Link href="/other">
-      <button>Go to Other page &gt;&gt;</button>
-    </Link>
-  </div>
-</div>
-
+export default () => (
+  <Layout header="Next" title="Top page.">
+    <p>Welcome to next.js!</p>
+    <Image fname="image.jpg" size="250" />
+    <hr />
+    <Link href="./other"><button>
+      go to Other &gt; &gt;
+    </button></Link>
+  </Layout>
+);
