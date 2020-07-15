@@ -15,7 +15,7 @@ class AddressShow extends Component {
   constructor(props){
     super(props);
     if (this.props.login == false){
-      // Router.push('/address');
+      Router.push('/address');
     }
     this.state = {
       last: -1,
@@ -84,7 +84,7 @@ class AddressShow extends Component {
     }
     let items = [];
     if (this.state.address != null){
-      for(let n in this.state.address.message){
+      for(let n in this.state.address.messages){
         items.unshift(<li key={n}>
           {this.state.address.messages[n]}
         </li>);
