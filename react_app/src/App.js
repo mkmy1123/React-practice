@@ -1,36 +1,30 @@
 import React,{ Component } from 'react';
-import { connect } from 'react-redux';
 import './App.css';
-import Memo from './memo/Memo';
-import AddForm from './memo/AddForm';
-import FindForm from './memo/FindForm';
-import DelForm from './memo/DelForm';
-import PersistForm from './memo/PersistForm';
+import Sampledata from './fire/SampleData';
+import firebase from "firebase";
+
+var config = {
+  apiKey: "AIzaSyA159fELtOtj0kXE4UsAa6RTBb1Zejskm8",
+  authDomain: "react-practice-c41c2.firebaseapp.com",
+  databaseURL: "https://react-practice-c41c2.firebaseio.com/",
+  projectId: "react-practice-c41c2",
+  storageBucket: "react-practice-c41c2.appspot.com",
+  messagingSenderId: "985293111088",
+};
+
+firebase.initializeApp(config);
 
 class App extends Component {
-td = {
-  width:"250px"
-}
-
-  constructor(props){
-    super(props);
-  }
 
   render(){
     return(
       <div>
-        <h1>Memo</h1>
-        <AddForm />
-        <hr />
-        <table><tbody><tr>
-          <td style={this.td}><FindForm /></td>
-          <td style={this.td}><DelForm /></td>
-          <td style={this.td}><PersistForm /></td>
-        </tr></tbody></table>
-        <Memo />
+        <h1>Fire</h1>
+        <h2>Sample data.</h2>
+        <Sampledata />
       </div>
     );
   }
 }
 
-export default connect ()(App);
+export default App;
