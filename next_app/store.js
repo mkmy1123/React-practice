@@ -13,7 +13,7 @@ var config = {
 
 var fireapp;
 try {
-  firebase.initializeApp(config);
+  fireapp = firebase.initializeApp(config);
 } catch (error) {
   console.log(error.message);
 }
@@ -21,12 +21,17 @@ export default fireapp;
 
 
 const initial = {
+  login:false,
+  username:'(click here!)',
+  email:'',
+  data:[],
+  items:[]
 }
 
 function fireReducer (state = initial, action){
   switch (action.type){
-    case 'TESTACTION':
-      return state;
+    case 'UPDATE_USER':
+      return action.value;
     default:
       return state;
   }
